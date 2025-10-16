@@ -7,7 +7,8 @@ import LoginScreen from "./LoginForm/LoginScreen";
 import CreateAccountScreen from "./CreateAccountScreen/CreateAccountScreen";
 import BottomNavigation from "./BottomNavigation/BottomNavigation";
 import ProfileScreen from "./Profile/ProfileScreen";
-import PrivacyScreen from "./Privacy/PrivacyScreen"; // 👈 Added import
+import PrivacyScreen from "./Privacy/PrivacyScreen";
+import NotificationScreen from "./Notification/NotificationScreen"; // ✅ Added import
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +32,7 @@ export default function App() {
             />
           </Stack.Navigator>
         ) : (
-          // 🏠 Main App Stack (Tabs + Profile + Privacy)
+          // 🏠 Main App Stack (Tabs + Profile + Privacy + Notifications)
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Main">
               {(props) => (
@@ -59,6 +60,18 @@ export default function App() {
               options={{
                 headerShown: true,
                 headerTitle: "Privacy Policy",
+                headerBackTitleVisible: false,
+                headerTintColor: "#2563eb",
+              }}
+            />
+
+            {/* 🔔 Notification Settings Screen */}
+            <Stack.Screen
+              name="Notifications"
+              component={NotificationScreen}
+              options={{
+                headerShown: true,
+                headerTitle: "Notifications",
                 headerBackTitleVisible: false,
                 headerTintColor: "#2563eb",
               }}

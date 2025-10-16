@@ -37,15 +37,17 @@ export default function SettingsScreen({ navigation: propNavigation, onLogout })
         <List.Section>
           <List.Subheader>Preferences</List.Subheader>
 
+          {/* 🔔 Notifications */}
           <List.Item
             title="Notifications"
             description="Manage push alerts and reminders"
             left={(props) => <List.Icon {...props} icon="bell-outline" />}
             right={(props) => <List.Icon {...props} icon="chevron-right" />}
-            onPress={() => alert("Notification settings coming soon")}
+            onPress={() => navigation.navigate("Notifications")} // ✅ updated
           />
           <Divider />
 
+          {/* 🎨 Theme */}
           <List.Item
             title="Theme"
             description="Switch between light and dark mode"
@@ -55,6 +57,7 @@ export default function SettingsScreen({ navigation: propNavigation, onLogout })
           />
           <Divider />
 
+          {/* 🔒 Privacy */}
           <List.Item
             title="Privacy"
             description="View privacy policy and data usage"
@@ -123,4 +126,3 @@ const styles = StyleSheet.create({
     backgroundColor: "#ef4444",
   },
 });
-  
