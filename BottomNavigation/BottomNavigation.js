@@ -6,13 +6,10 @@ import HomeScreen from "../Homepage/HomeScreen";
 import StudyScreen from "../StudyScreen/StudyScreen";
 import SettingsScreen from "../Settings/SettingsScreen";
 
-
 const Tab = createBottomTabNavigator();
 
 export default function BottomNavigation({ user, onLogout }) {
   return (
-
-   
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({ route }) => ({
@@ -30,15 +27,27 @@ export default function BottomNavigation({ user, onLogout }) {
         },
       })}
     >
+      {/* 🏠 Home Tab */}
       <Tab.Screen name="Home">
-        {() => <HomeScreen user={user} onLogout={onLogout} />}
+        {({ navigation }) => (
+          <HomeScreen navigation={navigation} user={user} onLogout={onLogout} />
+        )}
       </Tab.Screen>
-      <Tab.Screen name="Study" component={StudyScreen} />
+
+      {/* 📘 Study Tab */}
+      <Tab.Screen name="Study">
+        {({ navigation }) => <StudyScreen navigation={navigation} />}
+      </Tab.Screen>
+
+      {/* ⚙️ Settings Tab */}
       <Tab.Screen name="Settings">
-        {() => <SettingsScreen onLogout={onLogout} />}
+        {({ navigation }) => (
+          <SettingsScreen
+            navigation={navigation}
+            onLogout={onLogout}
+          />
+        )}
       </Tab.Screen>
     </Tab.Navigator>
-
-    
   );
 }

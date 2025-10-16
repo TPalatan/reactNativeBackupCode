@@ -8,8 +8,12 @@ import {
   List,
   Divider,
 } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native"; // ✅ ensures navigation is always available
 
-export default function SettingsScreen({ navigation, onLogout }) {
+export default function SettingsScreen({ navigation: propNavigation, onLogout }) {
+  // fallback navigation to avoid "undefined" error
+  const navigation = propNavigation || useNavigation();
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {/* 🧑 Profile Section */}
@@ -87,6 +91,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     elevation: 3,
     marginBottom: 20,
+    backgroundColor: "#ffffff",
   },
   profileContent: {
     flexDirection: "row",
@@ -99,6 +104,7 @@ const styles = StyleSheet.create({
   profileName: {
     fontSize: 20,
     fontWeight: "bold",
+    color: "#1e293b",
   },
   profileEmail: {
     fontSize: 14,
@@ -109,6 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     elevation: 2,
     marginBottom: 30,
+    backgroundColor: "#ffffff",
   },
   logoutButton: {
     width: "80%",
@@ -116,3 +123,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#ef4444",
   },
 });
+  
